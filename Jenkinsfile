@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stage('run') { 
-            steps{sh "ng serve &" 
+            steps{sh "ng serve -d" 
                 echo 'run..'
                 }
         }
