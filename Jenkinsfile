@@ -2,20 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('npm install') {
+            steps {sh "npm install"
+                echo 'ess..'
             }
         }
+        stage('run') { 
+            steps{sh "ng serve"
+                echo 'run..'
+                }
+        }
         stage('Test') {
-            steps {
+            steps {sh "curl http://localhost:4200"
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
+       
         }
     }
-}
+
