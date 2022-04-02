@@ -8,8 +8,12 @@ pipeline {
             }
         }
         stage('run') { 
-            steps{sh "ng serve &> /dev/null &"
-                echo 'run..'
+            steps{script{
+                withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                     sh "ng serve &"
+                }
+            }
+               
                 }
         }
         stage('Test') {
